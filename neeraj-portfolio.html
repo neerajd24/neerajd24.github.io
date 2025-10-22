@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neeraj Deshpande - Graphics Designer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Animated gradient background */
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff006e, #8338ec, #3a86ff, #fb5607);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating shapes */
+        .shape {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            animation: float 20s infinite ease-in-out;
+            z-index: 1;
+        }
+
+        .shape1 {
+            width: 300px;
+            height: 300px;
+            background: #ff006e;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape2 {
+            width: 400px;
+            height: 400px;
+            background: #8338ec;
+            top: 60%;
+            right: 10%;
+            animation-delay: 5s;
+        }
+
+        .shape3 {
+            width: 250px;
+            height: 250px;
+            background: #3a86ff;
+            bottom: 10%;
+            left: 50%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -50px) rotate(120deg); }
+            66% { transform: translate(-20px, 30px) rotate(240deg); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Header */
+        header {
+            padding: 40px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ff006e, #8338ec);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav {
+            display: flex;
+            gap: 40px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ff006e, #8338ec);
+            transition: width 0.3s;
+        }
+
+        nav a:hover:after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 0;
+        }
+
+        .hero-content {
+            flex: 1;
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #ff006e, #8338ec, #3a86ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #aaa;
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 40px;
+            background: linear-gradient(135deg, #ff006e, #8338ec);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(255, 0, 110, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 0, 110, 0.5);
+        }
+
+        /* Portfolio Grid */
+        .portfolio {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 48px;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 100px;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 0, 110, 0.5);
+            box-shadow: 0 20px 40px rgba(255, 0, 110, 0.2);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            transition: all 0.4s;
+        }
+
+        .project-card:nth-child(1) .project-image {
+            background: linear-gradient(135deg, #ff006e, #8338ec);
+        }
+
+        .project-card:nth-child(2) .project-image {
+            background: linear-gradient(135deg, #3a86ff, #8338ec);
+        }
+
+        .project-card:nth-child(3) .project-image {
+            background: linear-gradient(135deg, #fb5607, #ff006e);
+        }
+
+        .project-card:nth-child(4) .project-image {
+            background: linear-gradient(135deg, #06ffa5, #3a86ff);
+        }
+
+        .project-card:nth-child(5) .project-image {
+            background: linear-gradient(135deg, #ffbe0b, #fb5607);
+        }
+
+        .project-card:nth-child(6) .project-image {
+            background: linear-gradient(135deg, #8338ec, #3a86ff);
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.1);
+        }
+
+        .project-card {
+            cursor: pointer;
+        }
+
+        .project-info {
+            padding: 30px;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 40px;
+            animation: slideUp 0.4s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .modal-header h2 {
+            font-size: 36px;
+        }
+
+        .close-button {
+            font-size: 40px;
+            color: #fff;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .close-button:hover {
+            background: rgba(255, 0, 110, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            aspect-ratio: 4/3;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            border-color: rgba(255, 0, 110, 0.5);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .placeholder-image {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .upload-section {
+            margin-top: 40px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .upload-button {
+            display: inline-block;
+            padding: 15px 35px;
+            background: linear-gradient(135deg, #ff006e, #8338ec);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+
+        .upload-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 0, 110, 0.4);
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        /* Project Story Section */
+        .project-story {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid;
+            border-radius: 10px;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .project-story.brand {
+            border-color: #ff006e;
+        }
+
+        .project-story.app {
+            border-color: #3a86ff;
+        }
+
+        .project-story.poster {
+            border-color: #fb5607;
+        }
+
+        .project-story.package {
+            border-color: #06ffa5;
+        }
+
+        .project-story.social {
+            border-color: #ffbe0b;
+        }
+
+        .project-story.website {
+            border-color: #8338ec;
+        }
+
+        .story-section {
+            margin-bottom: 25px;
+        }
+
+        .story-section h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .story-section p {
+            color: #bbb;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .story-section ul {
+            list-style: none;
+            padding-left: 0;
+            color: #bbb;
+        }
+
+        .story-section ul li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .story-section ul li:before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #ff006e;
+            font-size: 20px;
+        }
+
+        .story-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .story-tag {
+            padding: 6px 15px;
+            background: rgba(255, 0, 110, 0.15);
+            border: 1px solid rgba(255, 0, 110, 0.3);
+            border-radius: 20px;
+            font-size: 13px;
+            color: #ff006e;
+        }
+
+        .testimonial-box {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border-left: 3px solid #8338ec;
+            font-style: italic;
+            color: #ccc;
+        }
+
+        .testimonial-author {
+            margin-top: 10px;
+            font-style: normal;
+            color: #8338ec;
+            font-weight: bold;
+        }
+
+        .edit-story-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .edit-story-btn:hover {
+            background: rgba(255, 0, 110, 0.2);
+            border-color: #ff006e;
+        }
+
+        .story-textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 15px;
+            font-family: inherit;
+            resize: vertical;
+            margin-top: 10px;
+        }
+
+        .story-textarea:focus {
+            outline: none;
+            border-color: #ff006e;
+        }
+
+        .save-story-btn {
+            padding: 10px 25px;
+            background: linear-gradient(135deg, #ff006e, #8338ec);
+            border: none;
+            border-radius: 25px;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+
+        .save-story-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 0, 110, 0.4);
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 80px 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 0, 110, 0.5);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ff006e, #8338ec);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: #aaa;
+            font-size: 16px;
+        }
+
+        /* Testimonials Carousel */
+        .testimonials-section {
+            padding: 100px 0;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .testimonial-carousel {
+            max-width: 800px;
+            margin: 60px auto;
+            position: relative;
+        }
+
+        .testimonial-slide {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            animation: fadeIn 0.5s;
+        }
+
+        .testimonial-slide.active {
+            display: block;
+        }
+
+        .testimonial-text {
+            font-size: 24px;
+            line-height: 1.8;
+            color: #fff;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .testimonial-author-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff006e, #8338ec);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .testimonial-details h4 {
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .testimonial-details p {
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            background: #ff006e;
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 16px;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff006e;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #ff006e, #8338ec);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 0, 110, 0.5);
+        }
+
+        /* Resume Download Section */
+        .resume-section {
+            text-align: center;
+            padding: 60px 0;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 20px;
+            margin: 60px 0;
+        }
+
+        .resume-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .download-btn {
+            padding: 15px 35px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .download-btn:hover {
+            background: rgba(255, 0, 110, 0.2);
+            border-color: #ff006e;
+            transform: translateY(-3px);
+        }
+
+        /* Experience Timeline */
+        .experience-section {
+            padding: 100px 0;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 60px auto;
+        }
+
+        .timeline-item {
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-left: 4px solid #ff006e;
+            transition: all 0.3s;
+        }
+
+        .timeline-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(10px);
+        }
+
+        .timeline-year {
+            color: #ff006e;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .timeline-title {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        .timeline-company {
+            color: #aaa;
+            margin-bottom: 15px;
+        }
+
+        .timeline-description {
+            color: #bbb;
+            line-height: 1.6;
+        }
+
+        /* Availability Badge */
+        .availability-badge {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #06ffa5, #3a86ff);
+            color: #000;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(6, 255, 165, 0.4);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .availability-dot {
+            width: 10px;
+            height: 10px;
+            background: #000;
+            border-radius: 50%;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            padding: 20px;
+            background: rgba(6, 255, 165, 0.2);
+            border: 1px solid #06ffa5;
+            border-radius: 10px;
+            color: #06ffa5;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        .project-info h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .project-info p {
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .skill-tag {
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            background: rgba(255, 0, 110, 0.2);
+            border-color: #ff006e;
+            transform: translateY(-3px);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .contact-link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+
+        .contact-link:hover {
+            color: #ff006e;
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            nav {
+                gap: 20px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+    <div class="shape shape1"></div>
+    <div class="shape shape2"></div>
+    <div class="shape shape3"></div>
+
+    <div class="container">
+        <header>
+            <div class="logo">ND</div>
+            <nav>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Hi, I'm <span class="gradient-text">Neeraj Deshpande</span></h1>
+                <p>A passionate graphics designer creating visual stories that captivate and inspire. Transforming ideas into stunning designs.</p>
+                <a href="#portfolio" class="cta-button">View My Work</a>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">150+</div>
+                <div class="stat-label">Projects Completed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Happy Clients</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">8+</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">25+</div>
+                <div class="stat-label">Awards Won</div>
+            </div>
+        </div>
+
+        <section id="portfolio" class="portfolio">
+            <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+            <div class="grid">
+                <div class="project-card">
+                    <div class="project-image">🎨</div>
+                    <div class="project-info">
+                        <h3>Brand Identity Design</h3>
+                        <p>Complete brand identity system for a tech startup including logo, color palette, and style guide.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">📱</div>
+                    <div class="project-info">
+                        <h3>Mobile App UI</h3>
+                        <p>Modern and intuitive mobile app interface design with focus on user experience and accessibility.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">🖼️</div>
+                    <div class="project-info">
+                        <h3>Poster Campaign</h3>
+                        <p>Eye-catching poster series for music festival featuring bold typography and vibrant colors.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">📦</div>
+                    <div class="project-info">
+                        <h3>Package Design</h3>
+                        <p>Sustainable packaging design for organic skincare brand with minimalist aesthetic.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">✨</div>
+                    <div class="project-info">
+                        <h3>Social Media Content</h3>
+                        <p>Engaging social media templates and graphics for fashion e-commerce brand.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">🌐</div>
+                    <div class="project-info">
+                        <h3>Website Redesign</h3>
+                        <p>Complete website redesign for creative agency with interactive elements and smooth animations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Timeline -->
+        <section id="experience" class="experience-section">
+            <h2 class="section-title">Professional <span class="gradient-text">Journey</span></h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2022 - PRESENT</div>
+                    <h3 class="timeline-title">Senior Graphics Designer</h3>
+                    <p class="timeline-company">Creative Studio Inc.</p>
+                    <p class="timeline-description">Leading design projects for Fortune 500 clients, managing a team of 5 designers, and establishing brand guidelines for major campaigns.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2019 - 2022</div>
+                    <h3 class="timeline-title">Graphics Designer</h3>
+                    <p class="timeline-company">Digital Agency Pro</p>
+                    <p class="timeline-description">Created visual identities for 40+ startups, designed UI/UX for mobile applications, and developed marketing materials across digital and print media.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2017 - 2019</div>
+                    <h3 class="timeline-title">Junior Designer</h3>
+                    <p class="timeline-company">Design Hub</p>
+                    <p class="timeline-description">Assisted in branding projects, created social media graphics, and learned industry-standard design workflows and best practices.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials-section">
+            <div class="container">
+                <h2 class="section-title">What Clients <span class="gradient-text">Say</span></h2>
+                <div class="testimonial-carousel">
+                    <div class="testimonial-slide active">
+                        <p class="testimonial-text">"Neeraj's design work exceeded all expectations. His creativity and attention to detail transformed our brand identity completely. Highly recommended!"</p>
+                        <div class="testimonial-author-info">
+                            <div class="testimonial-avatar">SC</div>
+                            <div class="testimonial-details">
+                                <h4>Sarah Chen</h4>
+                                <p>CEO at TechFlow</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <p class="testimonial-text">"Working with Neeraj was a pleasure. He understood our vision immediately and delivered stunning designs that perfectly captured our brand essence."</p>
+                        <div class="testimonial-author-info">
+                            <div class="testimonial-avatar">MJ</div>
+                            <div class="testimonial-details">
+                                <h4>Mark Johnson</h4>
+                                <p>Product Manager at FitLife</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <p class="testimonial-text">"The posters Neeraj designed became instantly iconic. His artistic vision and professional execution made our festival a visual masterpiece."</p>
+                        <div class="testimonial-author-info">
+                            <div class="testimonial-avatar">ER</div>
+                            <div class="testimonial-details">
+                                <h4>Emma Rodriguez</h4>
+                                <p>Festival Director</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <p class="testimonial-text">"Neeraj's packaging design is both beautiful and sustainable. He perfectly balanced aesthetics with our environmental values. Customers absolutely love it!"</p>
+                        <div class="testimonial-author-info">
+                            <div class="testimonial-avatar">LP</div>
+                            <div class="testimonial-details">
+                                <h4>Lisa Park</h4>
+                                <p>Founder, Pure Earth Skincare</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-dots">
+                    <span class="dot active" onclick="showTestimonial(0)"></span>
+                    <span class="dot" onclick="showTestimonial(1)"></span>
+                    <span class="dot" onclick="showTestimonial(2)"></span>
+                    <span class="dot" onclick="showTestimonial(3)"></span>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="skills">
+            <h2 class="section-title">Skills & <span class="gradient-text">Expertise</span></h2>
+            <div class="skills-grid">
+                <div class="skill-tag">Adobe Photoshop</div>
+                <div class="skill-tag">Illustrator</div>
+                <div class="skill-tag">InDesign</div>
+                <div class="skill-tag">Figma</div>
+                <div class="skill-tag">Brand Identity</div>
+                <div class="skill-tag">Typography</div>
+                <div class="skill-tag">UI/UX Design</div>
+                <div class="skill-tag">Print Design</div>
+                <div class="skill-tag">Motion Graphics</div>
+                <div class="skill-tag">Art Direction</div>
+            </div>
+        </section>
+
+        <!-- Resume Download Section -->
+        <section class="resume-section">
+            <h2 class="section-title">Interested in <span class="gradient-text">Working Together?</span></h2>
+            <p style="color: #aaa; font-size: 18px; margin-top: 20px;">Download my resume or get in touch to discuss your project</p>
+            <div class="resume-buttons">
+                <a href="#" class="download-btn" onclick="downloadResume(event)">
+                    📄 Download Resume (PDF)
+                </a>
+                <a href="#" class="download-btn" onclick="downloadPortfolio(event)">
+                    🎨 Download Portfolio (PDF)
+                </a>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <h2 class="section-title">Let's Create <span class="gradient-text">Together</span></h2>
+            <p style="color: #aaa; font-size: 18px; margin-bottom: 20px;">Have a project in mind? Let's bring your vision to life.</p>
+            
+            <!-- Contact Form -->
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" name="name" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required placeholder="john@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="company">Company / Organization</label>
+                    <input type="text" id="company" name="company" placeholder="Your Company">
+                </div>
+                <div class="form-group">
+                    <label for="message">Project Details *</label>
+                    <textarea id="message" name="message" required placeholder="Tell me about your project..."></textarea>
+                </div>
+                <button type="submit" class="submit-button">Send Message 🚀</button>
+                <div id="successMessage" class="success-message">
+                    ✅ Thank you! Your message has been sent successfully. I'll get back to you within 24 hours.
+                </div>
+            </form>
+            
+            <div class="contact-links">
+                <a href="mailto:neeraj@example.com" class="contact-link">📧 Email</a>
+                <a href="#" class="contact-link">💼 LinkedIn</a>
+                <a href="#" class="contact-link">📷 Instagram</a>
+                <a href="#" class="contact-link">🎨 Behance</a>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Neeraj Deshpande. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Availability Badge -->
+    <div class="availability-badge">
+        <div class="availability-dot"></div>
+        Available for Hire
+    </div>
+
+    <!-- Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Project Gallery</h2>
+                <button class="close-button" onclick="closeModal()">&times;</button>
+            </div>
+            <div id="imageGallery" class="image-gallery"></div>
+            <div class="upload-section">
+                <h3>Add Your Work</h3>
+                <p style="color: #aaa; margin-top: 10px;">Upload images to showcase in this project</p>
+                <input type="file" id="fileInput" accept="image/*" multiple onchange="handleFileUpload(event)">
+                <button class="upload-button" onclick="document.getElementById('fileInput').click()">
+                    📁 Upload Images
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Store images and stories for each project
+        const projectImages = {
+            0: [],
+            1: [],
+            2: [],
+            3: [],
+            4: [],
+            5: []
+        };
+
+        const projectStories = {
+            0: {
+                challenge: "The client, a fast-growing tech startup, needed a cohesive brand identity that would resonate with both investors and their target audience of young professionals. They had no existing brand assets and wanted something modern yet trustworthy.",
+                process: "I began with extensive research into the tech industry and competitor analysis. After multiple brainstorming sessions with stakeholders, I developed three distinct concepts. We conducted A/B testing with focus groups before finalizing the winning design. The process involved creating mood boards, sketching initial concepts, and refining typography choices.",
+                solution: "The final brand identity features a minimalist geometric logo that symbolizes connectivity and growth. The color palette combines bold primary colors with neutral tones for versatility. I created comprehensive brand guidelines covering logo usage, typography, color codes, and application examples.",
+                tools: ["Adobe Illustrator", "Photoshop", "Figma"],
+                testimonial: "Neeraj's design perfectly captured our vision. The brand identity has helped us stand out in a crowded market.",
+                client: "Sarah Chen, CEO at TechFlow"
+            },
+            1: {
+                challenge: "Design an intuitive mobile app interface for a fitness tracking application that would appeal to users of all fitness levels, from beginners to athletes. The app needed to display complex data in a simple, motivating way.",
+                process: "Started with user research and created personas for different fitness levels. Developed user journey maps and wireframes for key flows. Conducted usability testing with 20+ participants and iterated based on feedback. Focused heavily on accessibility and readability.",
+                solution: "Created a clean, card-based interface with gamification elements to keep users engaged. Used color psychology - greens for achievement, oranges for motivation. Implemented easy-to-read charts and progress tracking. Dark mode was added for better viewing during workouts.",
+                tools: ["Figma", "Adobe XD", "Sketch"],
+                testimonial: "The UI is incredibly intuitive. Our user retention increased by 40% after the redesign.",
+                client: "Mark Johnson, Product Manager at FitLife"
+            },
+            2: {
+                challenge: "Create a bold poster series for a summer music festival featuring diverse genres. The posters needed to work across digital and print media while capturing the energy and diversity of the festival lineup.",
+                process: "Researched music festival poster trends and studied vintage concert posters for inspiration. Created multiple style explorations combining photography, illustration, and typography. Experimented with different color combinations and layouts for maximum visual impact.",
+                solution: "Developed a vibrant poster series using overlapping geometric shapes, bold typography, and a psychedelic color palette. Each poster features a unique color story while maintaining brand consistency. The design system was adaptable across social media, billboards, and print materials.",
+                tools: ["Illustrator", "Photoshop", "InDesign"],
+                testimonial: "These posters became instantly iconic. We saw massive engagement on social media and sold out tickets faster than ever.",
+                client: "Emma Rodriguez, Festival Director"
+            },
+            3: {
+                challenge: "Design eco-friendly packaging for an organic skincare brand that communicates sustainability while standing out on crowded retail shelves. The packaging needed to be both beautiful and environmentally responsible.",
+                process: "Collaborated with the brand team to understand their sustainability values and target demographic. Researched eco-friendly printing techniques and recyclable materials. Created mockups and tested various paper stocks and finishes.",
+                solution: "Designed minimalist packaging using 100% recycled materials with soy-based inks. Incorporated botanical illustrations and earth-tone colors. Added embossed textures for a premium feel without plastic coating. Created a modular system that works across the entire product line.",
+                tools: ["Illustrator", "Photoshop", "Dimension"],
+                testimonial: "The packaging is stunning and perfectly aligns with our brand values. Customers love the sustainable approach.",
+                client: "Lisa Park, Founder of Pure Earth Skincare"
+            },
+            4: {
+                challenge: "Develop engaging social media templates for a fashion e-commerce brand that would increase engagement and maintain consistency across platforms while allowing for creative flexibility.",
+                process: "Analyzed the brand's existing social presence and competitor strategies. Created a content calendar and identified key post types. Designed flexible template systems for Instagram, Facebook, and Pinterest that could be easily customized by the marketing team.",
+                solution: "Created a library of 50+ templates with on-brand animations and transitions. Used bold typography, product photography, and lifestyle imagery. Incorporated trending formats like carousel posts, stories, and reels. Built a simple style guide for the team to create new content.",
+                tools: ["Canva", "After Effects", "Photoshop"],
+                testimonial: "Our engagement rate tripled! The templates are easy to use and always look professional.",
+                client: "Tom Williams, Marketing Director at StyleHub"
+            },
+            5: {
+                challenge: "Redesign a creative agency's outdated website to showcase their portfolio dynamically while improving user experience and loading times. The site needed to impress potential clients immediately.",
+                process: "Conducted user testing on the old site to identify pain points. Created wireframes focusing on portfolio presentation and easy navigation. Worked with developers to implement smooth animations and optimize performance. Designed for mobile-first approach.",
+                solution: "Built a modern, interactive website with smooth scrolling animations and dynamic portfolio filtering. Used a dark theme with colorful accents to make work stand out. Implemented lazy loading for images and optimized all assets. Added micro-interactions throughout for engagement.",
+                tools: ["Figma", "Webflow", "After Effects"],
+                testimonial: "The new website has become our best sales tool. Client inquiries increased by 200% in the first month.",
+                client: "David Kim, Creative Director at Pixel Agency"
+            }
+        };
+
+        let currentProject = null;
+
+        // Open modal when clicking on project cards
+        document.querySelectorAll('.project-card').forEach((card, index) => {
+            card.addEventListener('click', () => {
+                currentProject = index;
+                const title = card.querySelector('h3').textContent;
+                openModal(title, index);
+            });
+        });
+
+        function openModal(title, projectIndex) {
+            const modal = document.getElementById('projectModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const gallery = document.getElementById('imageGallery');
+
+            modalTitle.textContent = title;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            // Display story and images for this project
+            displayProjectStory(projectIndex);
+            displayGallery(projectIndex);
+        }
+
+        function displayProjectStory(projectIndex) {
+            const gallery = document.getElementById('imageGallery');
+            const story = projectStories[projectIndex];
+            const storyClasses = ['brand', 'app', 'poster', 'package', 'social', 'website'];
+            
+            // Create story section
+            const storyDiv = document.createElement('div');
+            storyDiv.className = `project-story ${storyClasses[projectIndex]}`;
+            storyDiv.id = 'projectStoryContent';
+            storyDiv.innerHTML = `
+                <div class="story-section">
+                    <h3>💡 The Challenge</h3>
+                    <p>${story.challenge}</p>
+                </div>
+                <div class="story-section">
+                    <h3>🎨 The Process</h3>
+                    <p>${story.process}</p>
+                </div>
+                <div class="story-section">
+                    <h3>✨ The Solution</h3>
+                    <p>${story.solution}</p>
+                </div>
+                <div class="story-section">
+                    <h3>🛠️ Tools Used</h3>
+                    <div class="story-tags">
+                        ${story.tools.map(tool => `<span class="story-tag">${tool}</span>`).join('')}
+                    </div>
+                </div>
+                ${story.testimonial ? `
+                    <div class="testimonial-box">
+                        "${story.testimonial}"
+                        <div class="testimonial-author">— ${story.client}</div>
+                    </div>
+                ` : ''}
+                <button class="edit-story-btn" onclick="editStory(${projectIndex})">✏️ Edit Project Story</button>
+            `;
+            
+            gallery.parentElement.insertBefore(storyDiv, gallery);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('projectModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            currentProject = null;
+            
+            // Remove story section when closing
+            const storyContent = document.getElementById('projectStoryContent');
+            if (storyContent) {
+                storyContent.remove();
+            }
+        }
+
+        function displayGallery(projectIndex) {
+            const gallery = document.getElementById('imageGallery');
+            gallery.innerHTML = '';
+
+            const images = projectImages[projectIndex];
+
+            if (images.length === 0) {
+                // Show placeholder images
+                const placeholders = [
+                    { emoji: '🎨', gradient: 'linear-gradient(135deg, #ff006e, #8338ec)' },
+                    { emoji: '✨', gradient: 'linear-gradient(135deg, #3a86ff, #8338ec)' },
+                    { emoji: '🖼️', gradient: 'linear-gradient(135deg, #fb5607, #ff006e)' },
+                    { emoji: '💎', gradient: 'linear-gradient(135deg, #06ffa5, #3a86ff)' }
+                ];
+
+                placeholders.forEach(placeholder => {
+                    const item = document.createElement('div');
+                    item.className = 'gallery-item';
+                    item.innerHTML = `
+                        <div class="placeholder-image" style="background: ${placeholder.gradient}">
+                            ${placeholder.emoji}
+                        </div>
+                    `;
+                    gallery.appendChild(item);
+                });
+            } else {
+                // Show uploaded images
+                images.forEach(imgSrc => {
+                    const item = document.createElement('div');
+                    item.className = 'gallery-item';
+                    item.innerHTML = `<img src="${imgSrc}" alt="Project work">`;
+                    gallery.appendChild(item);
+                });
+            }
+        }
+
+        function handleFileUpload(event) {
+            const files = event.target.files;
+            
+            if (currentProject === null) return;
+
+            for (let file of files) {
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        projectImages[currentProject].push(e.target.result);
+                        displayGallery(currentProject);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+
+            // Reset file input
+            event.target.value = '';
+        }
+
+        function editStory(projectIndex) {
+            const storyContent = document.getElementById('projectStoryContent');
+            const story = projectStories[projectIndex];
+            
+            storyContent.innerHTML = `
+                <div class="story-section">
+                    <h3>💡 The Challenge</h3>
+                    <textarea class="story-textarea" id="challengeText">${story.challenge}</textarea>
+                </div>
+                <div class="story-section">
+                    <h3>🎨 The Process</h3>
+                    <textarea class="story-textarea" id="processText">${story.process}</textarea>
+                </div>
+                <div class="story-section">
+                    <h3>✨ The Solution</h3>
+                    <textarea class="story-textarea" id="solutionText">${story.solution}</textarea>
+                </div>
+                <div class="story-section">
+                    <h3>💬 Client Testimonial</h3>
+                    <textarea class="story-textarea" id="testimonialText" style="min-height: 80px;">${story.testimonial || ''}</textarea>
+                    <input type="text" class="story-textarea" id="clientText" placeholder="Client name and title" value="${story.client || ''}" style="min-height: 40px; margin-top: 10px;">
+                </div>
+                <button class="save-story-btn" onclick="saveStory(${projectIndex})">💾 Save Story</button>
+            `;
+        }
+
+        function saveStory(projectIndex) {
+            const challenge = document.getElementById('challengeText').value;
+            const process = document.getElementById('processText').value;
+            const solution = document.getElementById('solutionText').value;
+            const testimonial = document.getElementById('testimonialText').value;
+            const client = document.getElementById('clientText').value;
+            
+            projectStories[projectIndex].challenge = challenge;
+            projectStories[projectIndex].process = process;
+            projectStories[projectIndex].solution = solution;
+            projectStories[projectIndex].testimonial = testimonial;
+            projectStories[projectIndex].client = client;
+            
+            // Refresh the story display
+            const storyContent = document.getElementById('projectStoryContent');
+            storyContent.remove();
+            displayProjectStory(projectIndex);
+        }
+
+        // Testimonial Carousel
+        let currentTestimonial = 0;
+
+        function showTestimonial(index) {
+            const slides = document.querySelectorAll('.testimonial-slide');
+            const dots = document.querySelectorAll('.dot');
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            currentTestimonial = index;
+        }
+
+        // Auto-rotate testimonials
+        setInterval(() => {
+            currentTestimonial = (currentTestimonial + 1) % 4;
+            showTestimonial(currentTestimonial);
+        }, 5000);
+
+        // Contact Form Submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const successMessage = document.getElementById('successMessage');
+            successMessage.classList.add('show');
+            
+            // Reset form
+            event.target.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 5000);
+        }
+
+        // Resume Download
+        function downloadResume(event) {
+            event.preventDefault();
+            alert('Resume download initiated! In a real scenario, this would download your PDF resume.');
+            // In production, you would link to actual resume file:
+            // window.location.href = 'path/to/your/resume.pdf';
+        }
+
+        function downloadPortfolio(event) {
+            event.preventDefault();
+            alert('Portfolio download initiated! In a real scenario, this would download your PDF portfolio.');
+            // In production, you would link to actual portfolio file:
+            // window.location.href = 'path/to/your/portfolio.pdf';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('projectModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
